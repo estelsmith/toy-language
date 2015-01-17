@@ -1,6 +1,6 @@
 <?php
 
-namespace ToyLang\Util\Regex;
+namespace ToyLang\Core\Util\Regex;
 
 class Expression
 {

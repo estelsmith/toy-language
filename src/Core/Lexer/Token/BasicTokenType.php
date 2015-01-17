@@ -2,7 +2,7 @@
 
 namespace ToyLang\Core\Lexer\Token;
 
-use ToyLang\Util\Regex\Expression;
+use ToyLang\Core\Util\Regex\Expression;
 
 class BasicTokenType implements TokenType
 {
