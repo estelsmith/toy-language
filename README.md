@@ -23,9 +23,9 @@ statement_terminator = ";";
 identifier = letter, { letter | digit | "_" }; (* @TODO: Actually use identifiers somewhere *)
 string = "'", any_character - "'", "'"; (* @TODO: Actually use strings somewhere *)
 
-equality_expression = additive_expression, { equality_operator, additive_expression };
-additive_expression = multiplicative_expression, { additive_operator, multiplicative_expression };
-multiplicative_expression = paren_expression, { multiplicative_operator, paren_expression };
+equality_expression = additive_expression, [ equality_operator, additive_expression ];
+additive_expression = multiplicative_expression, [ additive_operator, multiplicative_expression ];
+multiplicative_expression = paren_expression, [ multiplicative_operator, paren_expression ];
 paren_expression = open_paren, expression, close_paren | number;
 expression = equality_expression;
 
@@ -34,7 +34,7 @@ program = { expression, statement_terminator };
 
 Syntactically valid program:
 ```
-1 + 1 + 1;
+1 + 1;
 ```
 
 License
