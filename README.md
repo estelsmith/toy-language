@@ -4,7 +4,33 @@ Just making a toy language compiler and interpreter in PHP.
 
 Language Definition
 -------------------
-TODO
+The language is whitespace insignificant.
+
+EBNF Grammar:
+```
+any_character = ? any character ?;
+letter = ? regular expression [a-zA-Z] ?;
+digit = ? regular expression [0-9] ?;
+
+operator = "+" | "-" | "*" | "/";
+number = digit, { digit };
+identifier = letter, { letter | digit | "_" };
+
+string = "'", any_character - "'", "'"; (* @TODO: Actually use strings somewhere *)
+
+equality_expression = additive_expression, { "==" | "!=", additive_expression };
+additive_expression = multiplicative_expression, { "+" | "-", multiplicative_expression };
+multiplicative_expression = paren_expression, { "*" | "/", paren_expression };
+paren_expression = "(", expression, ")" | number;
+expression = equality_expression;
+
+program = { expression, ";" };
+```
+
+Syntactically valid program:
+```
+1 + 1 + 1;
+```
 
 License
 -------
