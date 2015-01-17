@@ -1,8 +1,8 @@
 <?php
 
-namespace ToyLang\Lexer;
+namespace ToyLang\Core\Lexer;
 
-use ToyLang\Lexer\Token\TokenType;
+use ToyLang\Core\Lexer\Token\TokenType;
 
 class StringLexer implements Lexer
 {

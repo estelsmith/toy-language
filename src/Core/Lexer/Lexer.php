@@ -1,9 +1,9 @@
 <?php
 
-namespace ToyLang\Lexer;
+namespace ToyLang\Core\Lexer;
 
-use ToyLang\Lexer\Token\Token;
-use ToyLang\Lexer\Token\TokenType;
+use ToyLang\Core\Lexer\Token\Token;
+use ToyLang\Core\Lexer\Token\TokenType;
 
 interface Lexer
 {

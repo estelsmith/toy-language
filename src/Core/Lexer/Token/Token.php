@@ -1,6 +1,6 @@
 <?php
 
-namespace ToyLang\Lexer\Token;
+namespace ToyLang\Core\Lexer\Token;
 
 interface Token
 {
