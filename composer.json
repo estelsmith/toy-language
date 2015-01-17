@@ -1,0 +1,17 @@
+{
+    "name": "estelsmith/toy-language",
+    "type": "project",
+    "description": "Just making a toy language compiler and interpreter in PHP.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Estel Smith",
+            "email": "estel.smith@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ToyLang\\": "src/"
+        }
+    }
+}
