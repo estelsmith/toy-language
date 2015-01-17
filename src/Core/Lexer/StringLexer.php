@@ -14,6 +14,8 @@ class StringLexer implements Lexer
     public function addTokenType(TokenType $tokenType)
     {
         $this->tokenTypes[] = $tokenType;
+
+        return $this;
     }
 
     public function addTokenTypes($tokenTypes)
@@ -21,6 +23,8 @@ class StringLexer implements Lexer
         foreach ($tokenTypes as $tokenType) {
             $this->addTokenType($tokenType);
         }
+
+        return $this;
     }
 
     public function tokenize($input)
