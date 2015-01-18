@@ -2,8 +2,6 @@
 
 namespace ToyLang\Parser\Node;
 
-use ToyLang\Parser\Node\Expression\ExpressionNode;
-
 class ProgramNode implements Node
 {
     /**

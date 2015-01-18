@@ -3,7 +3,7 @@
 namespace ToyLang\Parser;
 
 use ToyLang\Core\Lexer\Token\Token;
-use ToyLang\Parser\Node\Expression\ExpressionNode;
+use ToyLang\Parser\Node\ExpressionNode;
 use ToyLang\Parser\Node\NumberNode;
 use ToyLang\Parser\Node\ProgramNode;
 

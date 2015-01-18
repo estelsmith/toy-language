@@ -1,9 +1,6 @@
 <?php
 
-namespace ToyLang\Parser\Node\Expression;
-
-use ToyLang\Parser\Node\Node;
-use ToyLang\Parser\Node\NumberNode;
+namespace ToyLang\Parser\Node;
 
 class ExpressionNode implements Node
 {
