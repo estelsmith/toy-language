@@ -50,9 +50,6 @@ class LanguageLexer implements Lexer
 
     public function tokenize($input)
     {
-        var_dump($this->lexer->tokenize($input));
-        exit;
-
         return $this->lexer->tokenize($input);
     }
 }
