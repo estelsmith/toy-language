@@ -3,7 +3,6 @@
 namespace ToyLang\Parser;
 
 use ToyLang\Core\Lexer\Token\Token;
-use ToyLang\Core\Util\Regex\Expression;
 use ToyLang\Parser\Node\AssignmentNode;
 use ToyLang\Parser\Node\ExpressionNode;
 use ToyLang\Parser\Node\IdentifierNode;
