@@ -21,8 +21,11 @@ class ExpressionNode implements Node
 
     public function __construct(Node $leftExpression, $operator = null, ExpressionNode $rightExpression = null)
     {
-        if (!($leftExpression instanceof NumberNode || $leftExpression instanceof ExpressionNode)) {
-            throw new \InvalidArgumentException('$leftExpression must be a number or expression');
+        if (!($leftExpression instanceof NumberNode
+            || $leftExpression instanceof IdentifierNode
+            || $leftExpression instanceof ExpressionNode)
+        ) {
+            throw new \InvalidArgumentException('$leftExpression must be a number, identifier, or expression');
         }
 
         $this->leftExpression = $leftExpression;

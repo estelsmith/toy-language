@@ -27,7 +27,7 @@ string = "'", any_character - "'", "'"; (* @TODO: Actually use strings somewhere
 equality_expression = additive_expression, [ equality_operator, additive_expression ];
 additive_expression = multiplicative_expression, [ additive_operator, multiplicative_expression ];
 multiplicative_expression = paren_expression, [ multiplicative_operator, paren_expression ];
-paren_expression = open_paren, expression, close_paren | number;
+paren_expression = open_paren, expression, close_paren | number | identifier;
 expression = equality_expression;
 
 assignment = identifier, assign_operator, expression;

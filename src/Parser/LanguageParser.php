@@ -3,6 +3,7 @@
 namespace ToyLang\Parser;
 
 use ToyLang\Core\Lexer\Token\Token;
+use ToyLang\Core\Util\Regex\Expression;
 use ToyLang\Parser\Node\AssignmentNode;
 use ToyLang\Parser\Node\ExpressionNode;
 use ToyLang\Parser\Node\IdentifierNode;
@@ -57,9 +58,14 @@ class LanguageParser
     /**
      * @param int $count
      * @return Token
+     * @throws \Exception
      */
     protected function peek($count = 1)
     {
+        if (!$this->tokens) {
+            throw new \Exception('Unexpected EOF');
+        }
+
         return $this->tokens[$count - 1];
     }
 
@@ -208,6 +214,10 @@ class LanguageParser
             case 'NUMBER':
                 $this->discard();
                 return new ExpressionNode(new NumberNode($nextToken->getValue()));
+                break;
+            case 'IDENTIFIER':
+                $this->discard();
+                return new ExpressionNode(new IdentifierNode($nextToken->getValue()));
                 break;
             case 'OPEN_PAREN':
                 $this->discard();
