@@ -34,7 +34,7 @@ program = expression, statement_terminator;
 
 Syntactically valid program:
 ```
-1 + 3 * 2;
+(1 + 3) * 2;
 ```
 
 License

@@ -34,11 +34,28 @@ class LanguageParser
         array_shift($this->tokens);
     }
 
+    protected function skipWhitespace()
+    {
+        $tokens = &$this->tokens;
+        $continue = true;
+
+        while ($continue && $tokens) {
+            $token = $tokens[0];
+
+            if ($token->getTokenType()->getName() === 'WHITESPACE') {
+                array_shift($tokens);
+            } else {
+                $continue = false;
+            }
+        }
+    }
+
     /**
      * @return Token
      */
     protected function peek()
     {
+        $this->skipWhitespace();
         return $this->tokens[0];
     }
 
