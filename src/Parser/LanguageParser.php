@@ -25,7 +25,7 @@ class LanguageParser
             throw new \InvalidArgumentException('Cannot parse an empty tokens tree');
         }
 
-        $this->tokens = $tokens;
+        $this->tokens = $this->removeWhitespace($tokens);
 
         return $this->parseProgram();
     }
@@ -35,29 +35,30 @@ class LanguageParser
         array_shift($this->tokens);
     }
 
-    protected function skipWhitespace()
+    /**
+     * @param Token[] $tokens
+     * @return Token[]
+     */
+    protected function removeWhitespace($tokens)
     {
-        $tokens = &$this->tokens;
-        $continue = true;
+        $newTokens = [];
 
-        while ($continue && $tokens) {
-            $token = $tokens[0];
-
-            if ($token->getTokenType()->getName() === 'WHITESPACE') {
-                array_shift($tokens);
-            } else {
-                $continue = false;
+        foreach ($tokens as $token) {
+            if ($token->getTokenType()->getName() !== 'WHITESPACE') {
+                $newTokens[] = $token;
             }
         }
+
+        return $newTokens;
     }
 
     /**
+     * @param int $count
      * @return Token
      */
-    protected function peek()
+    protected function peek($count = 1)
     {
-        $this->skipWhitespace();
-        return $this->tokens[0];
+        return $this->tokens[$count - 1];
     }
 
     /**
