@@ -37,7 +37,7 @@ class BasicTokenType implements TokenType
         $result = $this->expression->match($input);
 
         if ($result) {
-            return new BasicToken($this, $result->getMatches()[0]);
+            return new BasicToken($this, $result->getMatches()[1]);
         }
 
         return null;

@@ -12,6 +12,7 @@ any_character = ? any character ?;
 letter = ? regular expression [a-zA-Z] ?;
 digit = ? regular expression [0-9] ?;
 
+assign_operator = "=";
 equality_operator = "==" | "!=";
 additive_operator = "+" | "-";
 multiplicative_operator = "*" | "/";
@@ -29,7 +30,7 @@ multiplicative_expression = paren_expression, [ multiplicative_operator, paren_e
 paren_expression = open_paren, expression, close_paren | number;
 expression = equality_expression;
 
-assignment = identifier, "=", expression;
+assignment = identifier, assign_operator, expression;
 
 statement = assignment | expression, statement_terminator;
 

@@ -3,6 +3,7 @@
 namespace ToyLang\Lexer;
 
 use ToyLang\Core\Lexer\Lexer;
+use ToyLang\Core\Lexer\Token\BasicToken;
 use ToyLang\Core\Lexer\Token\BasicTokenType;
 use ToyLang\Core\Lexer\Token\TokenType;
 use ToyLang\Core\Util\Regex\Expression;
@@ -17,6 +18,7 @@ class LanguageLexer implements Lexer
     public function __construct(Lexer $lexer)
     {
         $lexer->addTokenTypes([
+            new BasicTokenType('ASSIGN_OPERATOR', new Expression('/^(=)[^=]/')),
             new BasicTokenType('EQUALITY_OPERATOR', new Expression('/^(==|\!=)/')),
             new BasicTokenType('ADDITIVE_OPERATOR', new Expression('/^(\+|-)/')),
             new BasicTokenType('MULTIPLICATIVE_OPERATOR', new Expression('/^(\*|\/)/')),
@@ -48,6 +50,9 @@ class LanguageLexer implements Lexer
 
     public function tokenize($input)
     {
+        var_dump($this->lexer->tokenize($input));
+        exit;
+
         return $this->lexer->tokenize($input);
     }
 }
