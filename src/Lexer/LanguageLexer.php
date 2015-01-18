@@ -23,6 +23,7 @@ class LanguageLexer implements Lexer
             new BasicTokenType('OPEN_PAREN', new Expression('/^(\()/')),
             new BasicTokenType('CLOSE_PAREN', new Expression('/^(\))/')),
             new BasicTokenType('NUMBER', new Expression('/^([0-9]+)/')),
+            new BasicTokenType('IDENTIFIER', new Expression('/^([a-zA-Z][a-zA-Z0-9_]+)/')),
             new BasicTokenType('STATEMENT_TERMINATOR', new Expression('/^(;)/')),
             new BasicTokenType('WHITESPACE', new Expression('/^(\s+)/')),
             new BasicTokenType('UNKNOWN', new Expression('/^(.)/'))
