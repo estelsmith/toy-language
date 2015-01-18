@@ -227,7 +227,7 @@ class LanguageParser
                 break;
             default:
                 throw new \Exception(sprintf(
-                    'Expected NUMBER or OPEN_PAREN, got "%s" instead',
+                    'Expected NUMBER, IDENTIFIER, or OPEN_PAREN, got "%s" instead',
                     $tokenType
                 ));
                 break;
