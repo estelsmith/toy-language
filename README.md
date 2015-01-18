@@ -29,12 +29,12 @@ multiplicative_expression = paren_expression, [ multiplicative_operator, paren_e
 paren_expression = open_paren, expression, close_paren | number;
 expression = equality_expression;
 
-program = { expression, statement_terminator };
+program = expression, statement_terminator;
 ```
 
 Syntactically valid program:
 ```
-1 + 1;
+1 + 3 * 2;
 ```
 
 License
