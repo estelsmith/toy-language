@@ -6,6 +6,7 @@ use ToyLang\Core\Lexer\Token\Token;
 use ToyLang\Parser\Node\ExpressionNode;
 use ToyLang\Parser\Node\NumberNode;
 use ToyLang\Parser\Node\ProgramNode;
+use ToyLang\Parser\Node\StatementNode;
 
 class LanguageParser
 {
@@ -87,12 +88,23 @@ class LanguageParser
      */
     protected function parseProgram()
     {
+        return new ProgramNode($this->parseStatement());
+    }
+
+    /**
+     * @return StatementNode
+     */
+    protected function parseStatement()
+    {
         $expression = $this->parseExpression();
         $this->match('STATEMENT_TERMINATOR');
 
-        return new ProgramNode($expression);
+        return new StatementNode($expression);
     }
 
+    /**
+     * @return ExpressionNode
+     */
     protected function parseExpression()
     {
         return $this->parseEqualityExpression();

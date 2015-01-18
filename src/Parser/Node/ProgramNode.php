@@ -5,20 +5,20 @@ namespace ToyLang\Parser\Node;
 class ProgramNode implements Node
 {
     /**
-     * @var ExpressionNode
+     * @var StatementNode
      */
-    private $expression;
+    private $statement;
 
-    public function __construct(ExpressionNode $expression)
+    public function __construct(StatementNode $statement)
     {
-        $this->expression = $expression;
+        $this->statement = $statement;
     }
 
     /**
-     * @return ExpressionNode
+     * @return StatementNode
      */
-    public function getExpression()
+    public function getStatement()
     {
-        return $this->expression;
+        return $this->statement;
     }
 }
