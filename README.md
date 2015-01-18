@@ -29,7 +29,9 @@ multiplicative_expression = paren_expression, [ multiplicative_operator, paren_e
 paren_expression = open_paren, expression, close_paren | number;
 expression = equality_expression;
 
-statement = expression, statement_terminator;
+assignment = identifier, "=", expression;
+
+statement = assignment | expression, statement_terminator;
 
 program = statement;
 ```
