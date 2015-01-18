@@ -3,7 +3,9 @@
 namespace ToyLang\Parser;
 
 use ToyLang\Core\Lexer\Token\Token;
+use ToyLang\Parser\Node\AssignmentNode;
 use ToyLang\Parser\Node\ExpressionNode;
+use ToyLang\Parser\Node\IdentifierNode;
 use ToyLang\Parser\Node\NumberNode;
 use ToyLang\Parser\Node\ProgramNode;
 use ToyLang\Parser\Node\StatementNode;
@@ -97,10 +99,39 @@ class LanguageParser
      */
     protected function parseStatement()
     {
-        $expression = $this->parseExpression();
+        $node = null;
+
+        if ($this->nextIsAssignment()) {
+            $node = $this->parseAssignment();
+        } else {
+            $node = $this->parseExpression();
+        }
+
         $this->match('STATEMENT_TERMINATOR');
 
-        return new StatementNode($expression);
+        return new StatementNode($node);
+    }
+
+    protected function nextIsAssignment()
+    {
+        $token = $this->peek()->getTokenType()->getName();
+        $nextToken = $this->peek(2)->getTokenType()->getName();
+
+        return $token === 'IDENTIFIER' && $nextToken === 'ASSIGN_OPERATOR';
+    }
+
+    /**
+     * @return AssignmentNode
+     */
+    protected function parseAssignment()
+    {
+        $identifier = new IdentifierNode($this->match('IDENTIFIER')->getValue());
+
+        $this->match('ASSIGN_OPERATOR');
+
+        $expression = $this->parseExpression();
+
+        return new AssignmentNode($identifier, $expression);
     }
 
     /**

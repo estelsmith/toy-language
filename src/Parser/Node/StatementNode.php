@@ -5,20 +5,24 @@ namespace ToyLang\Parser\Node;
 class StatementNode implements Node
 {
     /**
-     * @var ExpressionNode
+     * @var AssignmentNode|ExpressionNode
      */
-    private $expression;
+    private $node;
 
-    public function __construct(ExpressionNode $expression)
+    public function __construct(Node $node)
     {
-        $this->expression = $expression;
+        if (!($node instanceof AssignmentNode || $node instanceof ExpressionNode)) {
+            throw new \Exception('$node must be an assignment or expression');
+        }
+
+        $this->node = $node;
     }
 
     /**
-     * @return ExpressionNode
+     * @return AssignmentNode|ExpressionNode
      */
-    public function getExpression()
+    public function getNode()
     {
-        return $this->expression;
+        return $this->node;
     }
 }
